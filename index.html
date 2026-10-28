@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Delicates — Premium Gourmet Market · Баку</title>
+<meta name="description" content="Delicates: сыры, оливковое масло, десерты, выпечка и деликатесы со всего мира. Каталог с ценами в манатах, доставка по Баку.">
+<meta name="theme-color" content="#202A44">
+<meta name="color-scheme" content="dark">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="icons/icon-192.png">
+<link rel="manifest" href="manifest.webmanifest">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Delicates">
+<meta property="og:title" content="Delicates — Premium Gourmet Market">
+<meta property="og:description" content="Сыры, масла, десерты и деликатесы. Баку.">
+<meta property="og:image" content="icons/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400..800&family=Playfair+Display:ital,wght@1,500;1,700&display=swap">
+<link rel="stylesheet" href="css/style.css">
+<link rel="modulepreload" href="js/app.js">
+<link rel="modulepreload" href="js/data.js">
+<script type="module" src="js/app.js"></script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"GroceryStore","name":"Delicates","telephone":"+994555003410","address":{"@type":"PostalAddress","streetAddress":"Khojaly Ave","addressLocality":"Baku","addressCountry":"AZ","postalCode":"AZ1025"},"sameAs":["https://www.instagram.com/delicates.az/"],"priceRange":"₼₼"}</script>
+</head>
+<body>
+<a class="skip" href="#main" data-i18n="skip">Перейти к содержимому</a>
+<div class="progress" aria-hidden="true"></div>
+
+<header class="site-header" id="top">
+  <div class="wrap bar">
+    <a class="logo" href="#top" aria-label="Delicates">
+      <span>DELIC</span>
+      <svg class="mark" viewBox="0 0 64 56" aria-hidden="true"><path d="M32 4 60 52H4Z" fill="currentColor" stroke="currentColor" stroke-width="5" stroke-linejoin="round"/><circle cx="32" cy="24" r="4.4" fill="var(--bg)"/><circle cx="25" cy="39" r="5.6" fill="var(--bg)"/><circle cx="42" cy="41" r="3.6" fill="var(--bg)"/></svg>
+      <span>TES</span>
+    </a>
+    <nav class="nav" aria-label="Main">
+      <a href="#about" data-i18n="navAbout"></a>
+      <a href="#catalog" data-i18n="navCatalog"></a>
+      <a href="#contact" data-i18n="navContact"></a>
+    </nav>
+    <div class="actions">
+      <div class="lang" role="group" aria-label="Language">
+        <button data-lang="ru" aria-pressed="true">RU</button>
+        <button data-lang="en" aria-pressed="false">EN</button>
+        <button data-lang="az" aria-pressed="false">AZ</button>
+      </div>
+      <button class="cart-btn" id="cartBtn" aria-label="Cart">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+        <b id="cartCount" hidden>0</b>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+<!-- HERO -->
+<section class="hero" id="hero">
+  <canvas id="heroCanvas" aria-hidden="true"></canvas>
+  <div class="hero-fade" aria-hidden="true"></div>
+  <div class="wrap hero-in">
+    <p class="badge reveal" data-i18n="badge">PREMIUM GOURMET MARKET · БАКУ</p>
+    <h1 class="reveal" data-i18n-html="h1">Искусство <em>высокой</em> гастрономии</h1>
+    <p class="lead reveal" data-i18n="heroText">Редкие сыры, испанские масла, свежая выпечка и десерты собственного производства.</p>
+    <div class="cta reveal">
+      <a class="btn gold" href="#catalog" data-i18n="cta1">Открыть каталог</a>
+      <a class="btn ghost" href="https://wolt.com/" target="_blank" rel="noopener" data-i18n="cta2">Заказать в Wolt</a>
+    </div>
+    <dl class="stats reveal">
+      <div><dt data-i18n="sItems"></dt><dd data-count="200">200</dd></div>
+      <div><dt data-i18n="sCats"></dt><dd data-count="13">13</dd></div>
+      <div><dt data-i18n="sStock"></dt><dd data-count="182" id="stockCount">182</dd></div>
+      <div><dt>Wolt</dt><dd>9.6</dd></div>
+    </dl>
+  </div>
+  <a class="scroll-hint" href="#brands"><span data-i18n="scroll"></span><i></i></a>
+</section>
+
+<!-- BRANDS -->
+<section class="brands" id="brands" aria-label="Brands">
+  <div class="marquee"><div class="track" id="marquee"></div></div>
+</section>
+
+<!-- CATEGORIES -->
+<section class="sec" id="cats">
+  <div class="wrap">
+    <header class="sec-h reveal"><h2 data-i18n="catsT"></h2><p data-i18n="catsS"></p></header>
+    <div class="cat-rail" id="catRail"></div>
+  </div>
+</section>
+
+<!-- DEALS -->
+<section class="sec deals" id="deals">
+  <div class="wrap">
+    <header class="sec-h reveal"><h2 data-i18n="dealsT"></h2><p data-i18n="dealsS"></p></header>
+  </div>
+  <div class="deal-rail" id="dealRail"></div>
+</section>
+
+<!-- CATALOG -->
+<section class="sec" id="catalog">
+  <div class="wrap">
+    <header class="sec-h reveal"><h2 data-i18n="catT"></h2><p id="foundCount" aria-live="polite"></p></header>
+    <div class="toolbar">
+      <label class="search">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+        <input id="q" type="search" autocomplete="off" spellcheck="false" data-i18n-ph="search">
+      </label>
+      <select id="sort" aria-label="Sort">
+        <option value="def" data-i18n="sDef"></option>
+        <option value="asc" data-i18n="sAsc"></option>
+        <option value="desc" data-i18n="sDesc"></option>
+        <option value="disc" data-i18n="sDisc"></option>
+      </select>
+      <label class="switch"><input type="checkbox" id="stock"><span></span><em data-i18n="inStock"></em></label>
+    </div>
+    <div class="chips" id="chips" role="tablist"></div>
+    <div class="grid" id="grid"></div>
+    <p class="none" id="none" hidden data-i18n="none"></p>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="sec about" id="about">
+  <div class="wrap about-grid">
+    <div class="about-copy reveal">
+      <h2 data-i18n="aboutT"></h2>
+      <p data-i18n="aboutP1"></p>
+      <p data-i18n="aboutP2"></p>
+    </div>
+    <ul class="feats">
+      <li class="reveal"><i><svg viewBox="0 0 24 24"><path d="m15.477 12.89 1.515 8.526a.5.5 0 0 1-.81.47l-3.58-2.687a1 1 0 0 0-1.197 0l-3.586 2.686a.5.5 0 0 1-.81-.469l1.514-8.526"/><circle cx="12" cy="8" r="6"/></svg></i><div><b data-i18n="f1"></b><span data-i18n="f1t"></span></div></li>
+      <li class="reveal"><i><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></i><div><b data-i18n="f2"></b><span data-i18n="f2t"></span></div></li>
+      <li class="reveal"><i><svg viewBox="0 0 24 24"><path d="M17 21a1 1 0 0 0 1-1v-5.35c0-.457.316-.844.727-1.041a4 4 0 0 0-2.134-7.589 5 5 0 0 0-9.186 0 4 4 0 0 0-2.134 7.588c.411.198.727.585.727 1.041V20a1 1 0 0 0 1 1Z"/><path d="M6 17h12"/></svg></i><div><b data-i18n="f3"></b><span data-i18n="f3t"></span></div></li>
+    </ul>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="sec contact" id="contact">
+  <div class="wrap">
+    <header class="sec-h reveal"><h2 data-i18n="conT"></h2><p data-i18n="hours"></p></header>
+    <div class="branches">
+      <article class="branch reveal">
+        <h3 data-i18n="branch1"></h3><p data-i18n="addr1"></p>
+        <div class="row">
+          <a class="btn gold sm" href="tel:+994555003410" data-i18n="call"></a>
+          <a class="btn ghost sm" href="https://www.google.com/maps/search/?api=1&query=Delicates+Khatai+Baku" target="_blank" rel="noopener" data-i18n="route"></a>
+        </div>
+      </article>
+      <article class="branch reveal">
+        <h3 data-i18n="branch2"></h3><p data-i18n="addr2"></p>
+        <div class="row">
+          <a class="btn gold sm" href="tel:+994555003410" data-i18n="call"></a>
+          <a class="btn ghost sm" href="https://www.google.com/maps/search/?api=1&query=Delicates+Sea+Breeze+Baku" target="_blank" rel="noopener" data-i18n="route"></a>
+        </div>
+      </article>
+      <article class="branch reveal social">
+        <h3>+994 55 500 34 10</h3><p>@delicates.az</p>
+        <div class="row">
+          <a class="btn gold sm" href="https://www.instagram.com/delicates.az/" target="_blank" rel="noopener">Instagram</a>
+          <a class="btn ghost sm" href="https://core.menuzen.com/p/kataloq/delicatesmenu" target="_blank" rel="noopener">Menu</a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <a class="logo sm" href="#top" aria-label="Delicates"><span>DELIC</span><svg class="mark" viewBox="0 0 64 56" aria-hidden="true"><path d="M32 4 60 52H4Z" fill="currentColor" stroke="currentColor" stroke-width="5" stroke-linejoin="round"/><circle cx="32" cy="24" r="4.4" fill="var(--bg)"/><circle cx="25" cy="39" r="5.6" fill="var(--bg)"/><circle cx="42" cy="41" r="3.6" fill="var(--bg)"/></svg><span>TES</span></a>
+    <p>© <span id="yr"></span> Delicates. <span data-i18n="rights"></span></p>
+  </div>
+</footer>
+
+<!-- CART -->
+<dialog id="cart" class="cart">
+  <form method="dialog" class="cart-in">
+    <header><h2 data-i18n="cartT"></h2><button value="x" aria-label="Close"><svg viewBox="0 0 24 24"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></button></header>
+    <div class="lines" id="lines"></div>
+    <footer>
+      <div class="total"><span data-i18n="total"></span><b id="total">0</b></div>
+      <a class="btn gold wide" id="wa" target="_blank" rel="noopener" data-i18n="send"></a>
+      <button type="button" class="link" id="clear" data-i18n="clear"></button>
+    </footer>
+  </form>
+</dialog>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<button class="to-top" id="toTop" hidden aria-label="Up"><svg viewBox="0 0 24 24"><path d="m5 12 7-7 7 7"/><path d="M12 19V5"/></svg></button>
+</body>
+</html>

@@ -1,0 +1,37 @@
+#cloud-config
+package_update: true
+packages: [nginx, rsync, ufw, fail2ban, certbot, python3-certbot-nginx]
+
+users:
+  - default
+  - name: deploy
+    shell: /bin/bash
+    ssh_authorized_keys:
+      - ВСТАВЬТЕ_СЮДА_СОДЕРЖИМОЕ_deploy_key.pub
+
+write_files:
+  - path: /etc/nginx/sites-available/delicates
+    content: |
+      server {
+          listen 80;
+          listen [::]:80;
+          server_name apphosts.org www.apphosts.org;
+          root /var/www/apphosts;
+          index index.html;
+          gzip on;
+          gzip_types text/css application/javascript application/json image/svg+xml application/manifest+json;
+          location / { try_files $uri $uri/ /index.html; add_header Cache-Control "no-cache"; }
+          location ~* \.(png|svg|webp|woff2)$ { expires 30d; add_header Cache-Control "public, immutable"; }
+      }
+
+runcmd:
+  - mkdir -p /var/www/apphosts/delicates
+  - chown -R deploy:deploy /var/www/apphosts
+  - rm -f /etc/nginx/sites-enabled/default
+  - ln -sf /etc/nginx/sites-available/delicates /etc/nginx/sites-enabled/delicates
+  - systemctl reload nginx
+  - fallocate -l 1G /swapfile && chmod 600 /swapfile && mkswap /swapfile && swapon /swapfile
+  - echo '/swapfile none swap sw 0 0' >> /etc/fstab
+  - ufw allow OpenSSH
+  - ufw allow 'Nginx Full'
+  - ufw --force enable
